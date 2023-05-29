@@ -20,6 +20,12 @@ func String(length uint) string {
 	return stringWithCharset(length, charset)
 }
 
+func StringLatinOnly(length uint) string {
+	charset := latinLowercaseCharset + latinUppercaseCharset
+
+	return stringWithCharset(length, charset)
+}
+
 func stringWithCharset(length uint, charset string) string {
 	b := make([]byte, length)
 	for i := range b {
