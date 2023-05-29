@@ -14,6 +14,14 @@ const (
 
 var random *rand.Rand = rand.New(rand.NewSource(time.Now().UnixNano()))
 
+func Bytes(length uint) []byte {
+	b := make([]byte, length)
+
+	random.Read(b)
+
+	return b
+}
+
 func String(length uint) string {
 	charset := latinLowercaseCharset + latinUppercaseCharset + numberCharset
 
