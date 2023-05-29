@@ -14,6 +14,12 @@ const (
 
 var random *rand.Rand = rand.New(rand.NewSource(time.Now().UnixNano()))
 
+func String(length uint) string {
+	charset := latinLowercaseCharset + latinUppercaseCharset + numberCharset
+
+	return stringWithCharset(length, charset)
+}
+
 func stringWithCharset(length uint, charset string) string {
 	b := make([]byte, length)
 	for i := range b {
