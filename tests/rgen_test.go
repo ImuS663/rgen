@@ -22,3 +22,27 @@ func TestBytesEmpty(t *testing.T) {
 		t.Fatalf("byte slyce empty")
 	}
 }
+
+func TestStringLength(t *testing.T) {
+	s := rgen.String(17)
+
+	if len(s) != 17 {
+		t.Fatalf("incorrect string length: %v", len(s))
+	}
+}
+
+func TestStringLatinOnlyLength(t *testing.T) {
+	s := rgen.StringLatinOnly(28)
+
+	if len(s) != 28 {
+		t.Fatalf("incorrect string length: %v", len(s))
+	}
+}
+
+func TestStringSpecialLength(t *testing.T) {
+	s := rgen.StringSpecial(8)
+
+	if len(s) != 8 {
+		t.Fatalf("incorrect string length: %v", len(s))
+	}
+}
