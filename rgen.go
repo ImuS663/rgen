@@ -2,6 +2,7 @@ package rgen
 
 import (
 	"math/rand"
+	"strings"
 	"time"
 )
 
@@ -40,6 +41,22 @@ func StringSpecial(length uint) string {
 	return stringWithCharset(length, charset)
 }
 
+func StringByPreset(preset string) string {
+	for true {
+		preset = strings.Replace(preset, "%a", stringWithCharset(1, latinLowercaseCharset+latinUppercaseCharset+numberCharset), 1)
+		preset = strings.Replace(preset, "%c", stringWithCharset(1, latinLowercaseCharset+latinUppercaseCharset), 1)
+		preset = strings.Replace(preset, "%l", stringWithCharset(1, latinLowercaseCharset), 1)
+		preset = strings.Replace(preset, "%u", stringWithCharset(1, latinUppercaseCharset), 1)
+		preset = strings.Replace(preset, "%n", stringWithCharset(1, numberCharset), 1)
+
+		if !cont(preset) {
+			break
+		}
+	}
+
+	return preset
+}
+
 func stringWithCharset(length uint, charset string) string {
 	b := make([]byte, length)
 	for i := range b {
@@ -47,4 +64,10 @@ func stringWithCharset(length uint, charset string) string {
 	}
 
 	return string(b)
+}
+
+func cont(preset string) bool {
+	return strings.Contains(preset, "%a") || strings.Contains(preset, "%c") ||
+		strings.Contains(preset, "%l") || strings.Contains(preset, "%u") ||
+		strings.Contains(preset, "%n")
 }
