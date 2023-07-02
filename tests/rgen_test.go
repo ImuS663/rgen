@@ -87,3 +87,33 @@ func TestStringSpecialCharset(t *testing.T) {
 		}
 	}
 }
+
+func TestStringByPresetLength(t *testing.T) {
+	s := rgen.StringByPreset("HT00%n%n-%u%u")
+
+	if len(s) != 9 {
+		t.Fatalf("incorrect length should by 9 but actuall: %v", len(s))
+	}
+}
+
+func TestStringByPresetAffiliationToCharset(t *testing.T) {
+	s := rgen.StringByPreset("%a%o%l%u%n")
+	charsetAny := latinLowercaseCharset + latinUppercaseCharset + numberCharset
+	charsetOnlyLatin := latinLowercaseCharset + latinUppercaseCharset
+
+	if !strings.Contains(charsetAny, string(s[0])) {
+		t.Fatalf("string contains a incorrect any char: %v", string(s[0]))
+	}
+	if !strings.Contains(charsetOnlyLatin, string(s[1])) {
+		t.Fatalf("string contains a incorrect any char: %v", string(s[1]))
+	}
+	if !strings.Contains(latinLowercaseCharset, string(s[2])) {
+		t.Fatalf("string contains a incorrect any char: %v", string(s[2]))
+	}
+	if !strings.Contains(latinUppercaseCharset, string(s[3])) {
+		t.Fatalf("string contains a incorrect any char: %v", string(s[3]))
+	}
+	if !strings.Contains(numberCharset, string(s[4])) {
+		t.Fatalf("string contains a incorrect any char: %v", string(s[4]))
+	}
+}
