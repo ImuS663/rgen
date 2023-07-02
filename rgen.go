@@ -44,7 +44,7 @@ func StringSpecial(length uint) string {
 func StringByPreset(preset string) string {
 	for true {
 		preset = strings.Replace(preset, "%a", stringWithCharset(1, latinLowercaseCharset+latinUppercaseCharset+numberCharset), 1)
-		preset = strings.Replace(preset, "%c", stringWithCharset(1, latinLowercaseCharset+latinUppercaseCharset), 1)
+		preset = strings.Replace(preset, "%o", stringWithCharset(1, latinLowercaseCharset+latinUppercaseCharset), 1)
 		preset = strings.Replace(preset, "%l", stringWithCharset(1, latinLowercaseCharset), 1)
 		preset = strings.Replace(preset, "%u", stringWithCharset(1, latinUppercaseCharset), 1)
 		preset = strings.Replace(preset, "%n", stringWithCharset(1, numberCharset), 1)
